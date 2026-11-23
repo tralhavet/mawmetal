@@ -1,0 +1,167 @@
+=== This package should contain the following files:
+
+Makefile
+	Type "make" for constructing the "MinimalAbsentWords" executable.
+
+MinimalAbsentWords.c
+	The main program.
+
+int.h
+	Defines the type INT as "long int". This should work both in 32 and
+	in 64-bit architectures. In 32-bit architectures INT should be a
+	32-bit integer whereas in 64-bit architectures it should be a 64-bit
+	integer. At start up, the program prints the number of bits that it
+	is using for INT.
+
+	Note that when using 32-bit ints the size of the string as well as
+	that of the suffix array are obviously limited to 2^32 - 1.
+
+lcp.c lcp.h
+	Functions for constructing the longest common prefix array by a
+	linear time method due to Kasai et al.
+	Original code from M. Douglas McIlroy's website
+	http://www.cs.dartmouth.edu/~doug/sarray/ with some
+	minor adaptations for complying with our needs.
+
+sarray.c sarray.h
+	Functions for constructing the suffix array.
+	Original code from M. Douglas McIlroy's website
+	http://www.cs.dartmouth.edu/~doug/sarray/ with some
+	minor adaptations for complying with our needs.
+
+stack.c stack.h
+	Functions for handling stacks of lcp intervals.
+
+example.fa
+	Small example of a DNA sequence in fasta format. It includes two "N"
+	letters, which are interpreted as string delimiters. Letters are
+	interpreted in the following way:
+		A,C,G,T,a,c,g,t - DNA (valid) letters
+		newlines - ignored
+		lines starting with ">" - ignored (fasta comments)
+		all remaining letters - string delimiters
+
+=== The program has the following interface:
+
+MinimalAbsentWords maxSize
+                   [ -m (less mem, but slower) ]
+                   [ -w (write to stdout) ]
+                   [ -rc (reversed complement) ]
+                   [ -n len (write only words of size len) ]
+                   file [ file ... ]
+
+maxSize
+	Maximum size of word that is searched.
+
+-m
+	Constructs the suffix array using qsort. This requires about half of
+	the memory required by the default action, but it is (much) slower. Its
+	main purpose is debugging.
+
+-w
+	By default, the program reports only the number of minimal absent words
+	found. This option also lists all those words.
+
+-rc
+	Considers the reversed complement of the sequence.
+
+-n len
+	Write only the minimal absent words of size "len".
+
+file [ file ... ]
+	One or more sequence files in fasta or in gzip fasta format.
+
+=== Examples
+
+shell prompt> MinimalAbsentWords 10 -rc example.fa
+using indexes with 32 bits
+reading data... done: 0 s
+got 19 valid DNA bases (i.e., ACGT or acgt)
+building suffix array... done: 0 s
+found 3 sub-string(s)
+building lcp array... done: 0 s
+searching minimal absent words... done: 0 s
+found 26 minimal absent words of size 3
+found 17 minimal absent words of size 4
+found 2 minimal absent words of size 6
+size of largest maximal repeat: 4
+found a total of 45 minimal absent words
+total time used: 0 s
+
+shell prompt> MinimalAbsentWords 10 -n 6 -rc example.fa
+using indexes with 32 bits
+reading data... done: 0 s
+got 19 valid DNA bases (i.e., ACGT or acgt)
+building suffix array... done: 0 s
+found 3 sub-string(s)
+building lcp array... done: 0 s
+searching minimal absent words... done: 0 s
+found 26 minimal absent words of size 3
+found 17 minimal absent words of size 4
+found 2 minimal absent words of size 6
+size of largest maximal repeat: 4
+found a total of 45 minimal absent words
+total time used: 0 s
+ACTAGT
+CCTAGG
+
+shell prompt> MinimalAbsentWords 10 -w -rc example.fa
+using indexes with 32 bits
+reading data... done: 0 s
+got 19 valid DNA bases (i.e., ACGT or acgt)
+building suffix array... done: 0 s
+found 3 sub-string(s)
+building lcp array... done: 0 s
+searching minimal absent words... done: 0 s
+found 26 minimal absent words of size 3
+found 17 minimal absent words of size 4
+found 2 minimal absent words of size 6
+size of largest maximal repeat: 4
+found a total of 45 minimal absent words
+total time used: 0 s
+AAG
+AAT
+GAA
+GAC
+GAG
+GAT
+TAA
+TAC
+ACC
+CCC
+GCG
+TCG
+TCT
+AGA
+CGA
+CGC
+GGG
+GGT
+ATC
+ATT
+CTC
+CTT
+GTA
+GTC
+TTA
+TTC
+AAAA
+AACG
+TAGC
+TATA
+GCCG
+TCCT
+ACGT
+CCGG
+GCTA
+AGCT
+GGCC
+AGGA
+CGGC
+CGTT
+ATAG
+CTAT
+TTTT
+ACTAGT
+CCTAGG
+

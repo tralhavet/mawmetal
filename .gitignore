@@ -1,0 +1,17 @@
+build/
+data/
+third_party/
+__pycache__/
+.DS_Store
+# code of others, fetched and built by bench/build_tools.sh and scripts/fetch_deps.sh; never distributed
+bench/tools/
+# Pinho et al. (2009) is distributed with this project (bench/vendor/, reference/), with the permission
+# of A. J. Pinho; only its build outputs are ignored.
+reference/maws_pinho2009/*.o
+reference/maws_pinho2009/MinimalAbsentWords
+
+# No data is distributed: the benchmark's measurements, our 2015 MAW distributions, and the MAW length
+# distributions and session records the paper's figures and tables are generated from.
+bench/results/
+# The paper is not distributed.
+paper/

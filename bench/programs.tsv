@@ -1,0 +1,14 @@
+# Code of others that the benchmark builds (build_tools.sh), fetched at these pinned versions; none of it
+# is kept in this repository. version: the git commit, or the sha256 of the tarball.
+# The MAW suite's repository also ships the sdsl-lite, libdivsufsort 2.0.1, pSAscan 0.1.0 and
+# EM-SparsePhi 0.1.0 used to build MAW, pMAW and emMAW.
+# Pinho et al.'s program cannot be downloaded: its site (ftp://www.ieeta.pt/~ap/maws, cited in the paper)
+# is offline and unarchived. Armando J. Pinho has agreed (October 2026) that the original 2009 code be
+# shared as part of this project: maws-2009-original.tar.gz is included at the path below.
+#name	source	version	license	description
+maw	https://github.com/solonas13/maw	d69fa88	GPL-3.0	MAW, pMAW, emMAW (Barton et al. 2014, 2016; Heliou et al. 2017)
+bwtman	https://github.com/fcunial/portfolio	4f37fa6	none stated	bwtman (Belazzougui and Cunial 2017), Cunial's prototype in bwtman/
+libsais	https://github.com/IlyaGrebnov/libsais	c284ba8	Apache-2.0	suffix arrays for mawmetal
+openmp	https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/openmp-19.1.7.src.tar.xz	bd7e6901ab086fd268750363017935fd4a717c153dad3c2aab86cb0140d9e3fe	Apache-2.0 WITH LLVM-exception	OpenMP runtime, linked statically (Apple clang ships none)
+openmp-cmake	https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/cmake-19.1.7.src.tar.xz	11c5a28f90053b0c43d0dec3d0ad579347fc277199c005206b963c19aae514e3	Apache-2.0 WITH LLVM-exception	CMake modules the OpenMP build needs
+pinho	vendor/maws-2009-original.tar.gz	6a59a41837d0aa7abe86d0edb36d6897bbc4a8f7961afb81db1aeb3b379d0443	all rights reserved, research use only	Pinho et al. (2009), BMC Bioinformatics 10:137

@@ -1,0 +1,16 @@
+# Benchmark genomes: downloaded once into data/<name>/<file> and checked against sha256.
+# reps: default number of timed runs per program. bytes: size of the download. length: sequence
+# characters including N; acgt: A, C, G and T (either case) on one strand.
+# The spruce assembly is Pabies1.0 (Nystedt et al. 2013), as distributed by the Spruce Genome Project
+# (congenie.org, now offline) and used in our 2015 study: all 10,253,694 scaffolds and the chloroplast.
+# This mirror (CNCB-NGDC) and Plant GARDEN (plantgarden.jp, t3329.G001/Pabies01-genome.fa.gz, block
+# gzip) serve the same text; run_bench.py records the sha256 of the decompressed text as well.
+#name	file	bytes	sha256	reps	records	length	acgt	url	description
+hhv5	hhv5.fna	239078	d145185e87070fa9c6d02c09dd756e1f0488f1953688c7c9a26be2d411c99695	3	1	235646	235646	https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&rettype=fasta&retmode=text&id=NC_006273.2	Human herpesvirus 5 (Merlin), NC_006273.2
+efaecalis	efaecalis.fna.gz	988302	dfe7679cde7d62e00b35b14319164f17c2aff218baef9f1739ef2d672e0fbb9e	3	4	3359974	3359974	https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/007/785/GCF_000007785.1_ASM778v1/GCF_000007785.1_ASM778v1_genomic.fna.gz	E. faecalis V583, GCF_000007785.1
+ecoli	ecoli.fna.gz	1379902	a96d3cfa58c88d477013c768f90a11d2386d42a70d566abfb6d9013dcbd24255	3	1	4641652	4641652	https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/005/845/GCF_000005845.2_ASM584v2/GCF_000005845.2_ASM584v2_genomic.fna.gz	E. coli K-12 MG1655, GCF_000005845.2
+yeast	yeast.fna.gz	3843460	1ec41f951b35f2752d5065edeafe6972455609d4383fb36dae12519a60b27a73	3	17	12157105	12157105	https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/146/045/GCF_000146045.2_R64/GCF_000146045.2_R64_genomic.fna.gz	S. cerevisiae S288C (R64), GCF_000146045.2
+chr21	chr21.fa.gz	12709705	c979ca1e5065c2521a50773473e0d0cc018fd6f3e9bb3aa90493fe7b45d57d1b	3	1	46709983	40088619	https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr21.fa.gz	Human chromosome 21, UCSC hg38
+chr1	chr1.fa.gz	74778116	baf03990d81ed87d66a976779c2eb4d8a0e5243829ca913556d3819fe0fba696	2	1	248956422	230481012	https://hgdownload.soe.ucsc.edu/goldenPath/hg38/chromosomes/chr1.fa.gz	Human chromosome 1, UCSC hg38
+grch38p2	grch38p2.fna.gz	949830537	21d9b2d27abe542c30ba9c126650a5345c59e9dd801a4dbf6e5718529eb35a94	1	486	3221487035	3061458595	https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.28_GRCh38.p2/GCF_000001405.28_GRCh38.p2_genomic.fna.gz	Human GRCh38.p2 (the 2015 release), GCF_000001405.28
+spruce	spruce.fa.gz	3732656698	d9b202c65f8e066c97c2f9072ba0a81e7d6924d6cd92e215f311198d5e4fde0e	1	10253694	12301351591	12018808399	https://download.cncb.ac.cn/scmethmap/peregdb/Genome/PicAbi/genome/PicAbi.fna.gz	Norway spruce Pabies1.0, whole assembly
