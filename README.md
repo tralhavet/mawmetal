@@ -6,8 +6,9 @@
 > algorithm, implemented it in Metal and C++, optimized and validated it, and benchmarked it. Ten
 > years ago, computing the MAW length distribution of the 12-gigabase Norway spruce genome and its
 > reverse complement took several days on a supercomputer with 1 TB of memory. mawmetal does it in
-> under four minutes on a laptop with 32 GB, and lists every MAW in about seven. It reproduces our
-> 2015 distribution for the human genome exactly, all 8,377,095,148 MAWs, in 29 seconds. We tested
+> under four minutes on a laptop with 32 GB, and lists every MAW in about seven. Our 2015 distribution
+> for the human genome (both strands), all 8,377,095,148 MAWs, needed the same 1-terabyte
+> supercomputer. mawmetal reproduces it exactly in 29 seconds on an M1 Max laptop. We tested
 > every published MAW program we could obtain and run, and mawmetal is 10 to 100 times faster than
 > all of them. The speed-up comes from fitting the algorithm to the hardware, not from newer
 > hardware alone. Optimization like this used to take too long to attempt by hand.
@@ -16,8 +17,12 @@ Minimal absent words (MAWs) of DNA sequences, using the GPU of an Apple Silicon 
 with the CPU.
 
 A word is a minimal absent word of a sequence if it does not occur in it but all its proper factors do.
-mawmetal computes the same MAWs as [MAW](https://github.com/solonas13/maw) (Barton, Heliou, Mouchard,
-Pissis, *BMC Bioinformatics* 2014). By default it reports how many MAWs there are of each length, and
+mawmetal computes the same MAWs as the program of Pinho, Ferreira, Garcia and Rodrigues
+([*BMC Bioinformatics* 10, 137, 2009](https://doi.org/10.1186/1471-2105-10-137)). That is the software
+we used ten years ago to study the MAW length distributions of thousands of genomes (Aurell, Innocenti
+and Zhou, [arXiv:1509.05188](https://arxiv.org/abs/1509.05188), *Physical Biology* 13, 026004, 2016).
+On ACGT words, the output also matches [MAW](https://github.com/solonas13/maw) exactly (Barton, Heliou,
+Mouchard, Pissis, *BMC Bioinformatics* 2014). By default it reports how many MAWs there are of each length, and
 `--list` writes the MAWs themselves in MAW's format.
 
 ## Build
