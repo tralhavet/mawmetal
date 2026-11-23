@@ -1,5 +1,17 @@
 # mawmetal
 
+> **Abstract.** mawmetal computes the minimal absent words of whole genomes on an Apple Silicon
+> laptop, using its unified-memory GPU together with the CPU. Claude, a large language model, drove
+> the work under the author's direction. Starting from the published literature, it designed the
+> algorithm, implemented it in Metal and C++, optimized and validated it, and benchmarked it. Ten
+> years ago, computing the MAW length distribution of the 12-gigabase Norway spruce genome and its
+> reverse complement took several days on a supercomputer with 1 TB of memory. mawmetal does it in
+> under four minutes on a laptop with 32 GB, and lists every MAW in about seven. It reproduces our
+> 2015 distribution for the human genome exactly, all 8,377,095,148 MAWs, in 29 seconds. We tested
+> every published MAW program we could obtain and run, and mawmetal is 10 to 100 times faster than
+> all of them. The speed-up comes from fitting the algorithm to the hardware, not from newer
+> hardware alone. Optimization like this used to take too long to attempt by hand.
+
 Minimal absent words (MAWs) of DNA sequences, using the GPU of an Apple Silicon Mac (Metal) together
 with the CPU.
 
